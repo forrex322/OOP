@@ -433,4 +433,6 @@ int main() {
 
 	//Service_Dynamic(&teachers[4]);
 
+	cout << "Vlad osnova" << endl;
+
 }
