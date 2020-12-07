@@ -75,13 +75,29 @@ void Student::outputStudent()
 void Student::studentWriteToFile()
 {
 	ofstream f("File_student.txt");
-	f << name << " " << surname << " " << school << endl;
+	try {
+		if (f.is_open()) {
+			f << name << " " << surname << " " << school << endl;
+		}
+		throw "Error of opening file";
+	}
+	catch (const char* exception) {
+		cout << exception << endl;
+	}
 }
 
 void Student::studentReadFromFile()
 {
 	ifstream f("File_student.txt");
-	cout << f.rdbuf() << endl;
+	try {
+		if (f.is_open()) {
+			cout << f.rdbuf() << endl;
+		}
+		throw "Error 303";
+	}
+	catch (const char* exception) {
+		cout << "Cannot open the file. Error: " << exception << endl;
+	}
 }
 
 Student Student::outputStudent(Student a)

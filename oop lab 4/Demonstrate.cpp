@@ -32,16 +32,6 @@ int functinOutsideFromClass(Teacher* a) {
 	return Tax = a->getTeacherSalary() * 0.2;
 }
 
-//void Service_Dynamic(Teacher* a[]) {
-//	string o;
-//	cin >> o;
-//	for (int i = 0; i < 4; i++) {
-//		if (o == a[i]->name) {
-//			cout << "Delete " << a[i]->name << endl;
-//			delete a[i];
-//		}
-//	}
-//}
 
 Student* createStudent() {
 	Student* studentNumberOne = new Student;
@@ -275,17 +265,7 @@ int main() {
 	Examen exam(&student, &teacher, &faculty); // асоціація
 	exam.passExam();
 
-	//// доробити агрегацію та композицію
-
-	////Faculty WorkOfTeacher(&teacher1,&KISP);//композиція
-	////WorkOfTeacher.teacherWork();
-
-	//Student stud;
-
-	//stud.studentWantEnterFaculty(student,&KISP);//агрегація
-
-	///*Examen exam(&student,&teacher,&faculty);
-	//exam.passExam();*/
+	
 
 	University XHY;
 
@@ -296,12 +276,6 @@ int main() {
 	University listOfFaculty(&XHY,&KISP);//композиція
 
 	listOfFaculty.listOfFaculty();
-
-	//Department dep;
-
-	//dep.name = "Department of Math";
-
-	//dep.listTeacherOfDepartment(dep,&teacher);// агрегація
 
 
 
@@ -340,26 +314,6 @@ int main() {
 
 	
 
-	//BiologyTeacher TeacherOfBiology;
-	///*BiologyTeacher* pTeacherOfBiology = &TeacherOfBiology;
-	//pTeacherOfBiology->teach();*/
-	//delete pTeacherOfBiology;
-
-	//MathematicsTeacher TeacherOfMath;
-	///*MathematicsTeacher* pTeacherOfMath = &TeacherOfMath;
-	//pTeacherOfMath->teach();*/
-	//delete pTeacherOfMath;
-
-	//EnglishTeacher TeacherOfEnglish;
-	//EnglishTeacher* pTeacherOfEnglish = &TeacherOfEnglish;
-	//pTeacherOfEnglish->teach();
-	//delete pTeacherOfEnglish;
-
-	//PhysicsTeacher TeacherOfPhysics;
-	//PhysicsTeacher* pTeacherOfPhysics = &TeacherOfPhysics;
-	//pTeacherOfPhysics->teach();
-	//delete pTeacherOfPhysics;
-
 	Teacher* pTeacher;
 	BiologyTeacher teacherOfBiology;
 	MathematicsTeacher teacherOfMath;
@@ -367,7 +321,7 @@ int main() {
 	PhysicsTeacher teacherOfPhysics;
 	BioPhysicsTeacher teacherOfBioPhysic;
 
-	pTeacher = (Teacher*)&teacherOfBiology;
+	pTeacher = (Teacher*)&teacherOfBiology; // pTeacher = new BiologyTeacher; тоже саме
 	pTeacher->teach();
 	pTeacher = (Teacher*)&teacherOfMath;
 	pTeacher->teach();
@@ -378,61 +332,12 @@ int main() {
 	cout << "Teacher of Physics wanted to be a BioPhysic" << endl;
 	pTeacher = (Teacher*)&teacherOfBioPhysic;
 	pTeacher->teach();
+
 	
 	//пізне звязування зробити
 	int (*pFcn)(Teacher) = functinOutsideFromClass;
 	cout << pFcn(teacher) << endl;
 
 
-	/*Teacher* teachers[] = {new BiologyTeacher, new MathematicsTeacher,new EnglishTeacher, new PhysicsTeacher };
-
-	teachers[0]->teach();
-	teachers[1]->teach();
-	teachers[2]->teach();
-	teachers[3]->teach();*/
-
-
-
-
-
-	/*teachers[0]->name = "Larisa";
-	teachers[0]->setTeacherInfo("Teacher","Women",1,36,12345,6250);
-	teachers[1]->name = "Lolita";
-	teachers[1]->setTeacherInfo("Dekan", "Women", 1, 36, 12345, 6250);
-	teachers[2]->name = "Lorochka";
-	teachers[2]->setTeacherInfo("Docent", "Women", 1, 36, 12345, 6250);
-	teachers[3]->name = "Marina";
-	teachers[3]->setTeacherInfo("Higher teacher", "Women", 1, 36, 12345, 6250);*/
-
-	/*string o;
-	cin >> o;*/
-
-	/*if (o == "Larisa") {
-		cout << "Delete Larisa" << endl;
-		delete teachers[0];
-	}
-	else if (o == "Lolita") {
-		cout << "Delete Lolita" << endl;
-		delete teachers[1];
-	}
-	else if (o == "Lorochka") {
-		cout << "Delete Lorochka" << endl;
-		delete teachers[2];
-	}
-	else if (o == "Marina") {
-		cout << "Delete Marina" << endl;
-		delete teachers[3];
-	}*/
-
-	/*for (int i = 0; i < 4; i++) {
-		if (o == teachers[i]->name) {
-			cout << "Delete " << teachers[i]->name << endl;
-			delete teachers[i];
-		}
-	}*/
-
-	//Service_Dynamic(&teachers[4]);
-
-	cout << "Vlad osnova" << endl;
 
 }
