@@ -1,6 +1,15 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
+#include <vector>
+#include <list>
+#include <deque>
+#include <set>
+#include <map>
+#include <stack>
+#include <queue>
+#include <functional> // std::plus 
+#include <algorithm> // std::transform 
 ////#include "Student.h"
 //#include "Examen.h"
 ////#include "Teacher.h"
@@ -43,6 +52,22 @@ Student* createStudent() {
 Student deleteStudent(Student* studentNumberOne) {
 	delete studentNumberOne;
 	return NULL;
+}
+
+template<typename T> void print_queue(T& q) {
+	while (!q.empty()) {
+		std::cout << q.top() << " ";
+		q.pop();
+	}
+	std::cout << '\n';
+}
+
+void printArray(int arr[], int n)
+{
+
+	for (int i = 0; i < n; i++) {
+		cout << arr[i] << ' ';
+	}
 }
 
 int main() {
@@ -392,4 +417,252 @@ int main() {
 	o.sumaOfTwoGrant(stud[0].getStudenGrant(), stud[1].getStudenGrant(), stud[2].getStudenGrant());
 	
 	// презентац≥€ 1-€ 2-тех. звд. 3-юмл. 4- ≥нтерфейс в win.forms(щоб мало нормальний вигл€д, можна з не робочими кнопками)
+	cout << "\nVector" << endl;
+	vector<string> v = { "Vadim", "Vlad", "Danya", "Misha" };
+	cout << "Add new students" << endl;
+	v.push_back("Dima");
+	v.push_back("Neket");
+
+	for (string n : v) {
+		cout << n << '\n';
+	}
+
+	cout << "\nList" << endl;
+	list<string> l = { "Maryna Ivanovna", "Nataly Sergeevna", "Nataly Vasulivna" };
+	cout << "Add new teachers" << endl;
+	l.push_front("Oksana Anatoliyvna");
+	l.push_back("Lydmila Edyardovna");
+
+	for (string n : l) {
+		cout << n << '\n';
+	}
+
+	cout << "\nDeque" << endl;
+	deque<string> d = { "Vadim", "Vlad", "Danya", "Misha" };
+	cout << "Add new students" << endl;
+	d.push_front("Dima");
+	d.push_back("Neket");
+
+	for (string n : d) {
+		std::cout << n << '\n';
+	}
+
+	cout << "\nSet" << endl;
+	set <int> st;
+
+	cout << "Enter 5 numbers: " << endl;
+
+	for (int i = 0; i < 5; i++) {
+		cout << i + 1 << ") ";
+		int dig; cin >> dig;
+		st.insert(dig);
+	}
+
+	cout << "Content of set: ";
+
+	copy(st.begin(), st.end(), ostream_iterator<int>(cout, " "));
+	cout << endl;
+
+	cout << "\nMultiset" << endl;
+
+	multiset <int> ms1;
+
+	ms1.insert(1);
+	ms1.insert(2);
+
+	cout << "The size of the multiset is initially " << ms1.size() << "." << endl;
+
+	ms1.clear();
+	cout << "The size of the multiset after clearing is " << ms1.size() << "." << endl;
+
+	cout << "\nMap" << endl;
+	map <int, int> mp;
+
+	cout << "Enter number of elements: "; int nn; cin >> nn;
+
+	for (int i = 0; i < nn; i++) {
+		cout << i << ") "; int a; cin >> a;
+		mp[a] = i;  // добавл€ем новые элементы
+	}
+
+	map <int, int> ::iterator it = mp.begin();
+	cout << "Get sorted map: " << endl;
+	for (int i = 0; it != mp.end(); it++, i++) {  // выводим их
+		cout << i << ") Key " << it->first << ", element " << it->second << endl;
+	}
+
+	cout << "\nMultimap" << endl;
+	multimap <char, int> myMultimap;///объ€вили multimap
+
+   ///заполн€ем myMultimap
+	myMultimap.insert(pair<char, int>('q', 111));
+	myMultimap.insert(pair<char, int>('u', 201));
+	myMultimap.insert(pair<char, int>('h', 301));
+
+	cout << "myMultimap contains:\n";
+	for (auto it = myMultimap.begin(); it != myMultimap.end(); ++it)
+	{
+		cout << it->first << " : " << it->second << endl;
+	}
+
+	cout << "\nStack" << endl;
+	stack <int> steck;  // создаем стек
+	int ii = 0;
+	cout << "Enter any 6 numbers: " << endl; // предлагаем пользователю 
+														// ввести 6 чисел
+	while (ii != 6) {
+		int a;
+		cin >> a;
+
+		steck.push(a);  // добавл€ем введенные числа
+		ii++;
+	}
+
+	if (steck.empty()) cout << "Stack dont empty";  // провер€ем пуст ли стек (нет)
+
+	cout << "Upper elemnt of stack: " << steck.top() << endl; // выводим верхний элемент
+	cout << "Let's delete upper element " << endl;
+
+	steck.pop();  // удал€ем верхний элемент
+
+	cout << "It's a new upper element: " << steck.top() << endl; // выводим уже новый
+
+	cout << "\nQueue" << endl;
+	queue<string> myQueue;     // создаем пустую очередь типа strin
+	// добавили в очередь несколько элементов типа string
+	myQueue.push("No pain ");
+	myQueue.push("- no gain");
+	cout << "Number of elements in queue: " << myQueue.size() << endl;
+	cout << "\nHere they are: " << myQueue.front() << myQueue.back();
+	myQueue.pop(); // удал€ем один элемент в очереди
+	cout << "\nNow there is one element: " << myQueue.front() << endl;
+
+	cout << "\nPriority queue" << endl;
+	std::priority_queue<int> q;
+
+	for (int n : {1, 8, 5, 6, 3, 4, 0, 9, 7, 2})
+		q.push(n);
+
+	print_queue(q);
+
+	std::priority_queue<int, std::vector<int>, std::greater<int> > q2;
+
+	for (int n : {1, 8, 5, 6, 3, 4, 0, 9, 7, 2})
+		q2.push(n);
+
+	print_queue(q2);
+
+	// Using lambda to compare elements.
+	auto cmp = [](int left, int right) { return (left ^ 1) < (right ^ 1); };
+	std::priority_queue<int, std::vector<int>, decltype(cmp)> q3(cmp);
+
+	for (int n : {1, 8, 5, 6, 3, 4, 0, 9, 7, 2})
+		q3.push(n);
+
+	print_queue(q3);
+
+	cout << "\nIterator input" << endl;
+	vector<int> v1 = { 1, 2, 3, 4, 5 };
+	// Declaring an iterator
+	vector<int>::iterator i1;
+	for (i1 = v1.begin(); i1 != v1.end(); ++i1) {
+		// Accessing elements using iterator
+		cout << (*i1) << " ";
+	}
+
+	cout << endl;
+
+	cout << "\nIterator output" << endl;
+	//vector<int>v1 = { 1, 2, 3, 4, 5 };
+	// Declaring an iterator 
+	//vector<int>::iterator i1;
+	for (i1 = v1.begin(); i1 != v1.end(); ++i1)
+	{
+		// Assigning elements using iterator 
+		*i1 = 1;
+	}
+	// v1 becomes 1 1 1 1 1 
+
+	cout << endl;
+
+	cout << "\nIterator forward" << endl;
+	for (i1 = v1.begin(); i1 != v1.end(); ++i1) {
+		// Assigning values to locations pointed by iterator 
+		*i1 = 1;
+	}
+
+	for (i1 = v1.begin(); i1 != v1.end(); ++i1) {
+		// Accessing values at locations pointed by iterator 
+		cout << (*i1) << " ";
+	}
+
+	cout << endl;
+
+	cout << "\nBidirectional iterator" << endl;
+
+	list<int>v2 = { 1, 2, 3, 4, 5 };
+
+	// Declaring an iterator 
+	list<int>::iterator i2;
+
+	// Accessing the elements from end using decrement 
+	// operator 
+	for (i2 = v2.end(); i2 != v2.begin(); --i2)
+	{
+		if (i2 != v2.end())
+		{
+			cout << (*i2) << " ";
+		}
+	}
+	cout << (*i2);
+
+	cout << endl;
+
+	cout << "\nIterator of random access" << endl;
+	vector<int>v12 = { 1, 2, 3, 4, 5 };
+	// Accessing elements using offset dereference 
+	// operator [ ] 
+	for (int i = 0; i < 5;)
+	{
+		cout << v12[i] << " ";
+		i++;
+	}
+
+	cout << endl;
+
+	cout << "Functor plus" << endl;
+	// First array  
+	int first[] = { 1, 2, 3, 4, 5 };
+
+	// Second array 
+	int second[] = { 10, 20, 30, 40, 50 };
+
+	// Result array 
+	int results[5];
+
+	// std::transform applies std::plus to the whole array 
+	std::transform(first, first + 5, second, results, std::plus<int>());
+
+	// Printing the result array 
+	for (int i = 0; i < 5; i++)
+		std::cout << results[i] << " ";
+
+	cout << endl;
+
+	cout << "Functor greater" << endl;
+	int arr[] = { 60, 10, 80, 40, 30,
+				 20, 50, 90, 70 };
+	int n1 = sizeof(arr) / sizeof(arr[0]);
+
+	// To sort the array in decreasing order 
+	// use greater <int>() as an third arguments 
+	sort(arr, arr + 9, greater<int>());
+
+	// Print array elements 
+	printArray(arr, n1);
+
+	cout << endl;
+
+
+
 }
