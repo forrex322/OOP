@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="BiologyTeacher.h" />
     <ClInclude Include="BioPhysicsTeacher.h" />
+    <ClInclude Include="Bookkeeping.h" />
     <ClInclude Include="Department.h" />
     <ClInclude Include="EnglishTeacher.h" />
     <ClInclude Include="Examen.h" />

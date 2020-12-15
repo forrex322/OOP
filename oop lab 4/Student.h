@@ -55,6 +55,7 @@ public:
 
 	Student(int valueGrant);//8 завдання
 	int getStudenGrant();
+	void setStudentGrant(int _grant);
 
 	Student(string valueCity);//8 завдання
 	string getStudentCity();
@@ -62,7 +63,14 @@ public:
 	Student(string valueName,string valueSchool);//8 завдання
 	string getStudentSchool();
 
-
-
 	friend class Teacher;
+
+	/*template <typename T>
+	void compare(Student* a, Student* b);*/
+
+	Student& operator ++();
+	Student& operator --();
+	Student operator ++(int);
+	Student operator --(int);
+
 };

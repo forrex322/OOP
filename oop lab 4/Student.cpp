@@ -44,6 +44,11 @@ int Student::getStudenGrant()
 	return grant;
 }
 
+void Student::setStudentGrant(int _grant)
+{
+	grant = _grant;
+}
+
 Student::Student(string valueCity)
 {
 	city = valueCity;
@@ -66,6 +71,65 @@ string Student::getStudentSchool()
 	cout << "Student " << name << " finished the " << school << " school" << endl << endl;
 	return string();
 }
+
+
+
+Student& Student::operator++()
+{
+	++studentId;
+	return *this;
+	// TODO: вставьте здесь оператор return
+}
+
+Student& Student::operator--()
+{
+	--age;
+	return *this;
+	// TODO: вставьте здесь оператор return
+}
+
+Student Student::operator++(int)
+{
+	/*Student temp;
+	temp.studentId = studentId++;
+	return temp;*/
+
+	Student student = *this;
+	++* this;
+	return student;
+}
+
+Student Student::operator--(int)
+{
+	/*Student temp;
+	temp.studentId = studentId--;
+	return temp;*/
+
+	Student student = *this;
+	--* this;
+	return student;
+}
+
+
+
+//template <typename T>
+//void Student::compare(Student* a, Student* b)
+//{
+//	/*const T& max(const T & a, const T & b) {
+//		return (a > b) ? a : b;
+//	}*/
+//
+//	T max = array[0];
+//	if (a.age > b.age) {
+//		cout << "A bigger than b" << endl;
+//		return a.age;
+//	}
+//	else {
+//		cout << "B bigger than a" << endl;
+//		return b.age;
+//	}
+//
+//}
 
 void Student::outputStudent()
 {

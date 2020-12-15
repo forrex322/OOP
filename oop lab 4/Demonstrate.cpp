@@ -15,6 +15,7 @@
 #include "University.h"
 #include "ForeignDepartment.h"
 #include "BioPhysicsTeacher.h"
+#include "Bookkeeping.h"
 
 
 //якщо буде багато помилок при взаємодії класів то закинути файли .h в .cpp
@@ -61,6 +62,12 @@ int main() {
 	student.studentWriteToFile();// зробити через try catch просто перевырка на помилки і створення та видалення об'єктів через switch case
 	student.studentReadFromFile();
 	student.setStudentInfo("Hayova 8","Khm",18,1,06760);
+	//student.outputStudent(student);
+
+	++student; // binary operator
+	--student; // binary operator
+	student++; //postfix
+	student--; //postfix
 	student.outputStudent(student);
 
 	int s_id = 1;
@@ -130,6 +137,8 @@ int main() {
 	p->adress = "Gastelo 15";
 	p->outputTeacher();
 
+	//зробити шаблонну функцию
+	
 	Student* pstudent1;
 	//const std::exception &
 	try
@@ -339,5 +348,48 @@ int main() {
 	cout << pFcn(teacher) << endl;
 
 
+	int count = 3;
+	Student* stud = new Student[count];
+	stud[0].setStudentGrant(5500);
+	stud[1].setStudentGrant(1300);
+	stud[2].setStudentGrant(1800);
 
+	Bookkeeping <int>g(stud[0].getStudenGrant());
+	Bookkeeping <int>b(stud[1].getStudenGrant());
+	Bookkeeping <int>c(stud[2].getStudenGrant());
+	Bookkeeping <int>o(stud[0].getStudenGrant(), stud[1].getStudenGrant(),stud[2].getStudenGrant());
+	Bookkeeping <int>emptyp;
+	/*Bookkeeping <int>ppp(stud[0].getStudenGrant(), stud[1].getStudenGrant(), stud[2].getStudenGrant());
+	Bookkeeping <int>iii(stud[0].getStudenGrant(), stud[1].getStudenGrant(), stud[2].getStudenGrant());*/
+
+	cout << "President grant is ";
+	g.showGrants();
+	
+	cout << "Suma of President and Default grants is ";
+	b += g;
+	b.showGrants();
+
+	g -= c;
+	cout << "Difference of President and High grants is ";
+	g.showGrants();
+
+	c *= b;
+	cout << "Multiply of Default and High grants is: ";
+	c.showGrants();
+
+	g = c;
+	g.showGrants();
+
+	//c = g - b; // binary operators
+	//cout << "c = g - b";
+	//c.showGrants();
+
+	//g = c + b;
+	//cout << "g = c + b";
+	//g.showGrants();
+	
+
+	o.sumaOfTwoGrant(stud[0].getStudenGrant(), stud[1].getStudenGrant(), stud[2].getStudenGrant());
+	
+	// презентація 1-я 2-тех. звд. 3-юмл. 4- інтерфейс в win.forms(щоб мало нормальний вигляд, можна з не робочими кнопками)
 }
